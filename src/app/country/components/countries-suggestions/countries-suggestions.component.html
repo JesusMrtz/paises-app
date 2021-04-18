@@ -1,0 +1,8 @@
+<ul class="list-group" *ngIf="countriesSugestions.length">
+  <li class="list-group-item list-group-item-action cursor-pointer" *ngFor="let country of countriesSugestions">
+    <a class="nav-link" [routerLink]="['/country', country.alpha2Code]">{{ country[property] | titlecase }}</a>
+  </li>
+  <li class="list-group-item list-group-item-action cursor-pointer">
+    <a class="nav-link" (click)="search()">Buscar: "{{ searchValue | titlecase }}"</a>
+  </li>
+</ul>

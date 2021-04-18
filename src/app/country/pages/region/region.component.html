@@ -1,0 +1,23 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+  <h1>Buscar por región <strong>{{ regionActivated | titlecase }}</strong></h1>
+<hr>
+<h2>Seleccione la región</h2>
+<header class="row">
+  <div class="col">
+    <!-- [class.btn-primary]="region === regionActivated" -->
+    <!-- [ngClass]="{'btn-primary': region === regionActivated, 'btn-outline-primary': region !== regionActivated}" -->
+    <button class="btn" [ngClass]="getClassCSS(region)" *ngFor="let region of regions" (click)="activateRegion(region)">
+      {{ region | titlecase }}
+    </button>
+  </div>
+</header>
+<hr>
+<div class="alert alert-danger text-center" *ngIf="showAlert">
+  No es posible encontrar el <strong>{{ this.regionActivated }}</strong>
+</div>
+<main class="row" *ngIf="countries.length">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</main>
+</div>

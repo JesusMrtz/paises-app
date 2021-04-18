@@ -1,0 +1,19 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+  <h1>Por capital</h1>
+<div class="row">
+  <div class="col">
+    <app-search-country [placeholder]="placeholder" (OnEnter)="search($event)" (OnDebounce)="suggestions($event)"></app-search-country>
+  </div>
+</div>
+<app-countries-suggestions [countriesSugestions]="countriesSugestions" property="capital" [searchValue]="searchValue" (OnClickSuggestion)="search($event)"></app-countries-suggestions>
+<hr>
+<div class="alert alert-danger text-center" *ngIf="showAlert">
+  No es posible encontrar el <strong>{{ searchValue }}</strong>
+</div>
+<main class="row" *ngIf="countries.length">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</main>
+
+</div>

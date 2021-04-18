@@ -1,0 +1,43 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+  <div class="alert alert-info" *ngIf="!country; else existCountry">
+    Espere por favor...
+  </div>
+
+  <ng-template #existCountry>
+    <main class="row">
+      <div class="col-12">
+        <h1>País: <strong>{{ country.name }}</strong></h1>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <h2>Bandera</h2>
+          <img class="img-thumbnail" [src]="country.flag" [alt]="country.name">
+        </div>
+        <div class="col">
+          <h2>Información</h2>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Población</strong> {{ country.population | number }}
+            </li>
+            <li class="list-group-item">
+              <strong>Código númerico</strong> {{ country.numericCode }}
+            </li>
+            <li class="list-group-item">
+              <strong>Código alpha3</strong> {{ country.alpha3Code }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <aside class="row">
+      <h2>Traducciones</h2>
+      <div class="col">
+        <span class="badge bg-primary mr-2" *ngFor="let translation of country.translations | keyvalue">{{ translation.value }}</span>
+      </div>
+    </aside>
+    <pre class="mt-5">
+      {{ country | json }}
+    </pre>
+  </ng-template>
+
+</div>
